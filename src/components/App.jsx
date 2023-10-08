@@ -3,6 +3,7 @@ import { nanoid } from 'nanoid'
 import { ContactForm } from "./ContactForm/ContactForm";
 import { Filter } from "./Filter/Filter";
 import { ContactList } from "./ContactList/ContactList";
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 export class App extends Component {
 
@@ -24,7 +25,7 @@ addNewContact = (newContact) => {
     (contact) => contact.name.toLowerCase() === newContact.name.toLowerCase()
   );
   if (nameExists) {
-    alert(`${newContact.name}' is already in contacts.`);
+    Notify.warning(`${newContact.name}' is already in contacts.`);
   } else {
     this.setState((prevState) => ({
     contacts: [...prevState.contacts, { ...newContact, id: nanoid() }],
