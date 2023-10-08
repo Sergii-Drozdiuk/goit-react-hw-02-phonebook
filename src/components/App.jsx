@@ -50,12 +50,12 @@ filter = (searchName)=> {
       contact.name.toLowerCase().includes(filter.toLowerCase())
     ) : contacts;
 
-    return <div>
-   <h1>Phonebook</h1>
-   <ContactForm onAddContact={this.addNewContact} />
-   <h2>Contacts</h2>
-   <Filter onSearch={this.filter} filterValue ={filter} />
+    return <>
+  <h1 className="mb-4 text-center text-2xl">Phonebook</h1>
+  <ContactForm onAddContact={this.addNewContact}/>
+  <h2 className="mb-4 text-center text-xl">Contacts</h2>
+  <Filter onSearch={this.filter} filterValue ={filter}/>
   <ContactList contacts={visibleContacts} onRemoveContact={this.onRemoveContact} />
-    </div>
+  </>
   }
 }

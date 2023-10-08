@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 export const ContactList = ({ contacts, onRemoveContact }) => {
 	return <ul>
 		{contacts.map(({ id, name, number }) => (
-			<li key={id}>
+			<li key={id} className="flex gap-4 items-center justify-between mb-2">
 				<p>{name}: {number}</p>
-				<button type="button" onClick={() => onRemoveContact(id)}>Delete</button>
+				<button type="button" onClick={() => onRemoveContact(id)} className="rounded-lg px-2 bg-rose-500 hover:bg-rose-600 active:bg-rose-700">Delete</button>
 			</li>
 		))}
 	</ul>
