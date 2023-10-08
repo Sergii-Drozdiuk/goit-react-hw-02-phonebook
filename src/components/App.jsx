@@ -1,21 +1,59 @@
-import styles from './App.module.css';
+import { Component } from "react";
+import { nanoid } from 'nanoid'
+import { ContactForm } from "./ContactForm/ContactForm";
+import { Filter } from "./Filter/Filter";
+import { ContactList } from "./ContactList/ContactList";
 
-export const App = () => (
-  <>
-    <h1 className={styles.title}>Hello, React</h1>
-  </>
-);
+export class App extends Component {
 
-//! Або можна зробити ось так без import styles
+  state = {
+    contacts: [
+    { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
+    {id: 'id-2', name: 'Hermione Kline', number: '443-89-12'},
+    {id: 'id-3', name: 'Eden Clements', number: '645-17-79'},
+    { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
+    ],
+    filter: ''
+  }
 
-// export const App = () => (
-//   <>
-//     <h1 className="text-yellow-300 font-extrabold font-sans text-6xl">Hello, React</h1>
-//   </>
-// );
+addNewContact = (newContact) => {
+  const { contacts } = this.state;
+  const nameExists = contacts.some(
+    (contact) => contact.name.toLowerCase() === newContact.name.toLowerCase()
+  );
+  if (nameExists) {
+    alert(`${newContact.name}' is already in contacts.`);
+  } else {
+    this.setState((prevState) => ({
+    contacts: [...prevState.contacts, { ...newContact, id: nanoid() }],
+  }));
+}
+};
 
-//! Моя вам порада - оскільки ми використовуємо Tailwind,
-//! ми повністю позбавляємося CSS файлів, тому краще писати інлайн стилі,
-//! оскільки Tailwind сам все зробить за нас, а також неперевершено оптимізує
-//! CSS файли, тому бийте компоненти на маленькі під-компоненти
-//! щоб воно виглядало чисто, і постарайтеся повністю позбавитися від CSS файлів.
+filter = (searchName)=> {
+  this.setState(() => ({
+    filter: searchName,
+  }));
+}
+
+  onRemoveContact = (contactId) => {
+    this.setState(({ contacts }) => ({
+      contacts: contacts.filter(contact => contact.id !== contactId)
+    }));
+  }
+
+  render() {
+    const {contacts, filter } = this.state;
+    const visibleContacts = filter ? contacts.filter((contact) => 
+      contact.name.toLowerCase().includes(filter.toLowerCase())
+    ) : contacts;
+
+    return <div>
+   <h1>Phonebook</h1>
+   <ContactForm onAddContact={this.addNewContact} />
+   <h2>Contacts</h2>
+   <Filter onSearch={this.filter} filterValue ={filter} />
+  <ContactList contacts={visibleContacts} onRemoveContact={this.onRemoveContact} />
+    </div>
+  }
+}
