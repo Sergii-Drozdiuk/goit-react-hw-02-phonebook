@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 export const Filter = ({ onSearch, filterValue }) => {
     return <label>Find contacts by name
-        <input value={filterValue} type="text" onChange={(e) => onSearch(e.target.value)}></input>
+        <input value={filterValue} type="text" onChange={(e) => onSearch(e.target.value)} className="text-black"></input>
     </label>
 }
 

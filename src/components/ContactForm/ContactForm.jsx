@@ -19,7 +19,6 @@ const ContactShema = Yup.object().shape({
       .required('This is a required field')
       .min(9, "Please enter at least 9 characters"),
 });
-  
 export class ContactForm extends Component {
 
     render() {
@@ -34,11 +33,11 @@ export class ContactForm extends Component {
       >
         <Form>
           <label>Name
-          <Field name="name" type="text" />
+          <Field name="name" type="text" className="text-black"/>
           <ErrorMessage name="name" />
           </label>
           <label>Number
-            <Field name="number" type="tel" />
+            <Field name="number" type="tel" className="text-black"/>
             <ErrorMessage name="number" />
           </label>
           <button type="submit">Add contact</button>
