@@ -31,16 +31,16 @@ export class ContactForm extends Component {
 
         validationSchema={ContactShema}
       >
-        <Form className="flex flex-col gap-2 items-center mb-2">
-          <label className="flex flex-col gap-2 items-center">Name
-          <Field name="name" type="text" className="text-black rounded-lg pl-2"/>
+        <Form className="mb-2 flex flex-col items-center gap-2">
+          <label className="flex flex-col items-center gap-2">Name
+          <Field name="name" type="text" className="rounded-lg pl-2 text-black"/>
           <ErrorMessage name="name" />
           </label>
-          <label className="flex flex-col gap-2 items-center">Number
-            <Field name="number" type="tel" className="text-black rounded-lg pl-2"/>
+          <label className="flex flex-col items-center gap-2">Number
+            <Field name="number" type="tel" className="rounded-lg pl-2 text-black"/>
             <ErrorMessage name="number" />
           </label>
-          <button type="submit" className="rounded-lg px-2 bg-emerald-500 hover:bg-emerald-600 active:bg-emerald-700 mt-3">Add contact</button>
+          <button type="submit" className="mt-3 rounded-lg bg-emerald-500 px-2 hover:bg-emerald-600 active:bg-emerald-700">Add contact</button>
         </Form>
       </Formik>
     }
