@@ -4,6 +4,8 @@ import { ContactForm } from "./ContactForm/ContactForm";
 import { Filter } from "./Filter/Filter";
 import { ContactList } from "./ContactList/ContactList";
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { FcBusinessContact, FcContacts } from 'react-icons/fc';
+
 
 export class App extends Component {
 
@@ -52,9 +54,9 @@ filter = (searchName)=> {
     ) : contacts;
 
     return <>
-  <h1 className="mb-4 text-center text-2xl">Phonebook</h1>
+  <h1 className="mb-4 flex items-center justify-center gap-2 text-2xl"><FcBusinessContact/>Phonebook</h1>
   <ContactForm onAddContact={this.addNewContact}/>
-  <h2 className="mb-4 text-center text-xl">Contacts</h2>
+  <h2 className="mb-4 flex items-center justify-center gap-2 text-xl"><FcContacts/>Contacts</h2>
   <Filter onSearch={this.filter} filterValue ={filter}/>
   <ContactList contacts={visibleContacts} onRemoveContact={this.onRemoveContact} />
   </>

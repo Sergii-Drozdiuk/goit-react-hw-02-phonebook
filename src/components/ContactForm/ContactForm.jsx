@@ -2,6 +2,7 @@ import { Component } from "react";
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import PropTypes from 'prop-types';
+import { PiUserCirclePlusLight } from 'react-icons/pi';
 
 const ContactShema = Yup.object().shape({
     name: Yup.string()
@@ -40,7 +41,7 @@ export class ContactForm extends Component {
             <Field name="number" type="tel" className="rounded-lg pl-2 text-black"/>
             <ErrorMessage name="number" />
           </label>
-          <button type="submit" className="mt-3 rounded-lg bg-emerald-500 px-2 hover:bg-emerald-600 active:bg-emerald-700">Add contact</button>
+          <button type="submit" className="mt-3 flex items-center justify-center gap-1 rounded-lg bg-emerald-500 px-2 hover:bg-emerald-600 active:bg-emerald-700"><PiUserCirclePlusLight/>Add contact</button>
         </Form>
       </Formik>
     }
